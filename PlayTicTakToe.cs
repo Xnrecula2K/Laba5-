@@ -56,7 +56,7 @@ internal class PlayTicTakToe
                     Console.WriteLine($"Игрок {currentPlayer} победил!");
                     gameFinished = true;
                 }
-                else if (moves == size * size)
+                else if (CheckDraw(board, size))
                 {
                     PrintBoard(board, size);
                     Console.WriteLine("Ничья! Все клетки заполнены.");
@@ -70,8 +70,23 @@ internal class PlayTicTakToe
 
             Console.Write("Сыграть еще раз (y/n)? ");
             string ans = Console.ReadLine();
-            again = (ans == "y");
+            again = (ans == "y" || ans == "Y");
         }
+    }
+
+    public static bool CheckDraw(char[,] board, int size)
+    {
+        for (int r = 0; r < size; r++)
+        {
+            for (int c = 0; c < size; c++)
+            {
+                if (board[r, c] == '.')
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public static void PrintBoard(char[,] board, int size)
