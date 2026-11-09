@@ -4,6 +4,36 @@ internal class PlayTicTakToe
 {
     public static void Run()
     {
+        while (true)
+        {
+            Console.WriteLine("\n=== ГЛАВНОЕ МЕНЮ ===");
+            Console.WriteLine("1 - Играть нормально");
+            Console.WriteLine("2 - Проверить ничью");
+            Console.WriteLine("0 - Выход");
+            Console.Write("Выберите пункт (1, 2 или 0): ");
+            string choice = Console.ReadLine()?.Trim();
+
+            if (choice == "1")
+            {
+                PlayGame();
+            }
+            else if (choice == "2")
+            {
+                TestDraw();
+            }
+            else if (choice == "0")
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Неверный пункт меню.");
+            }
+        }
+    }
+
+    public static void PlayGame()
+    {
         bool again = true;
         while (again)
         {
@@ -20,7 +50,6 @@ internal class PlayTicTakToe
 
             char currentPlayer = 'X';
             bool gameFinished = false;
-            int moves = 0;
 
             while (!gameFinished)
             {
@@ -48,7 +77,6 @@ internal class PlayTicTakToe
                 }
 
                 board[row, col] = currentPlayer;
-                moves++;
 
                 if (CheckWin(board, size, row, col, currentPlayer))
                 {
@@ -59,7 +87,7 @@ internal class PlayTicTakToe
                 else if (CheckDraw(board, size))
                 {
                     PrintBoard(board, size);
-                    Console.WriteLine("Ничья! Все клетки заполнены.");
+                    Console.WriteLine("Ничья! Проверка на ничью работает успешно!");
                     gameFinished = true;
                 }
                 else
@@ -72,6 +100,61 @@ internal class PlayTicTakToe
             string ans = Console.ReadLine();
             again = (ans == "y" || ans == "Y");
         }
+    }
+
+    public static void TestDraw()
+    {
+        const int size = 10;
+        char[,] board = new char[size, size];
+
+        for (int r = 0; r < size; r++)
+        {
+            for (int c = 0; c < size; c++)
+            {
+                board[r, c] = ((r / 2 + c) % 2 == 0) ? 'X' : 'O';
+            }
+        }
+        board[size - 1, size - 1] = '.';
+
+        Console.WriteLine("\n--- ТЕСТОВЫЙ РЕЖИМ ПРОВЕРКИ НИЧЬЕЙ ---");
+        Console.WriteLine("Доска заполнена на 99 клеток. Единственная свободная клетка: J10.");
+        PrintBoard(board, size);
+
+        int row, col;
+        while (true)
+        {
+            Console.Write("Сделайте ход в свободную клетку J10 (или 10 10): ");
+            string input = Console.ReadLine();
+
+            if (TryParseCell(input, size, out row, out col))
+            {
+                if (board[row, col] == '.')
+                {
+                    break;
+                }
+                Console.WriteLine("Эта клетка уже занята. Введите J10.");
+            }
+            else
+            {
+                Console.WriteLine("Неверные координаты. Введите J10.");
+            }
+        }
+
+        board[row, col] = 'X';
+
+        PrintBoard(board, size);
+
+        if (CheckDraw(board, size))
+        {
+            Console.WriteLine("Ничья! Проверка на ничью работает успешно!");
+        }
+        else
+        {
+            Console.WriteLine("Ошибка: ничья не определена.");
+        }
+
+        Console.WriteLine("Нажмите Enter для возврата в меню...");
+        Console.ReadLine();
     }
 
     public static bool CheckDraw(char[,] board, int size)
