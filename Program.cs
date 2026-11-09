@@ -16,7 +16,6 @@ namespace Laba5
                 Console.WriteLine("3) Выход");
                 Console.WriteLine("4) Сортировка");
                 Console.WriteLine("5) Крестики-нолики 10х10");
-                Console.WriteLine("6) Крестики-нолики 10x10(ничья)");
                 Console.Write("Ваш выбор: ");
 
                 bool isParsed = int.TryParse(Console.ReadLine(), out int ch);
