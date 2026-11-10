@@ -2,6 +2,8 @@
 using Laba5;
 namespace Laba5
 {
+    //Транспонирование матрицы
+    // Сумма диагоналей матрицы с учётом центрального элемента
     class Program
     {
         internal static void Main(string[] args)
