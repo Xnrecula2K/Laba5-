@@ -1,9 +1,15 @@
 namespace Laba5;
 
 
+/// <summary>
+/// Класс для выхода из программы.
+/// </summary>
 internal static class ExitProgram
 {
-    /// Запрашивает у пользователя подтверждение завершения работы и обновляет флаг выполнения программы.
+    /// <summary>
+    /// Спрашивает у пользователя, хочет ли он выйти, и если да, то останавливает программу.
+    /// </summary>
+    /// <param name="isRunning">Флаг, который показывает, работает программа или нет.</param>
     public static void Run(ref bool isRunning)
     {
         Console.Write("Завершить программу (y/n)? ");

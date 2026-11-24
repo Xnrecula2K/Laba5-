@@ -2,16 +2,28 @@ using System.Diagnostics;
 
 namespace Laba5;
 
+/// <summary>
+/// Класс для сравнения двух сортировок: гномьей и вставками.
+/// </summary>
 internal class SortingCheck
 {
+    /// <summary>
+    /// Длина массива.
+    /// </summary>
     private int _len;
 
+    /// <summary>
+    /// Конструктор по умолчанию. Ставит длину массива 10.
+    /// </summary>
     public SortingCheck()
     {
         _len = 10;
     }
 
-
+    /// <summary>
+    /// Конструктор, где длину массива задаём сами.
+    /// </summary>
+    /// <param name="len">Длина массива от 1 до 10. Если не подходит, ставится 10.</param>
     public SortingCheck(int len)
     {
         if (len <= 0 || len > 10)
@@ -25,13 +37,17 @@ internal class SortingCheck
         }
     }
 
-    
+    /// <summary>
+    /// Запускает сортировку с длиной, которую задали в конструкторе.
+    /// </summary>
     public void RunDefault()
     {
         ExecuteSorting(_len);
     }
 
-    
+    /// <summary>
+    /// Спрашивает длину массива и запускает сортировку.
+    /// </summary>
     public void RunCustom()
     {
         Console.Write("Введите размер массива от 1 до 10: ");
@@ -47,6 +63,10 @@ internal class SortingCheck
         ExecuteSorting(_len);
     }
 
+    /// <summary>
+    /// Заполняет массив случайными числами, сортирует его двумя способами и показывает, какой быстрее.
+    /// </summary>
+    /// <param name="length">Длина массива.</param>
     private void ExecuteSorting(int length)
     {
         int[] array = new int[length];
@@ -94,6 +114,10 @@ internal class SortingCheck
         }
     }
 
+    /// <summary>
+    /// Гномья сортировка массива по возрастанию.
+    /// </summary>
+    /// <param name="array">Массив, который сортируем.</param>
     private void GnomeSort(int[] array)
     {
         int index = 0;
@@ -113,6 +137,10 @@ internal class SortingCheck
         }
     }
 
+    /// <summary>
+    /// Сортировка вставками по возрастанию.
+    /// </summary>
+    /// <param name="array">Массив, который сортируем.</param>
     private void InsertionSort(int[] array)
     {
         for (int i = 1; i < array.Length; i++)

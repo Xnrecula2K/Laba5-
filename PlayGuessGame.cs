@@ -1,8 +1,15 @@
 namespace Laba5;
 
 
+/// <summary>
+/// Игра "Отгадай ответ". Программа считает пример, а пользователь должен угадать ответ.
+/// </summary>
 internal class PlayGuessGame
 {
+    /// <summary>
+    /// Запускает игру: сначала вводим a и b, потом угадываем ответ.
+    /// </summary>
+    /// <param name="isRunning">Флаг работы программы, он выключается, если ответ угадан.</param>
     public static void Run(ref bool isRunning)
     {
         if (!GameInputs(out int a, out int b))
@@ -13,6 +20,12 @@ internal class PlayGuessGame
         GameLogic(a, b, ref isRunning);
     }
 
+    /// <summary>
+    /// Считывает a и b с клавиатуры и проверяет, что они подходят для примера.
+    /// </summary>
+    /// <param name="a">Первое число (a).</param>
+    /// <param name="b">Второе число (b), оно должно быть больше 0.</param>
+    /// <returns>Возвращает true, если всё введено правильно, иначе false.</returns>
     public static bool GameInputs(out int a, out int b)
     {
         a = 0;
@@ -46,6 +59,12 @@ internal class PlayGuessGame
         return true;
     }
 
+    /// <summary>
+    /// Считает правильный ответ и даёт пользователю 3 попытки его угадать.
+    /// </summary>
+    /// <param name="a">Число a, которое ввели с клавиатуры.</param>
+    /// <param name="b">Число b, которое ввели с клавиатуры.</param>
+    /// <param name="isRunning">Флаг работы программы, он выключается, если ответ угадан.</param>
     public static void GameLogic(int a, int b, ref bool isRunning)
     {
         double cosVal = Math.Cos(2 * a);

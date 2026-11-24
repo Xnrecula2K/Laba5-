@@ -1,9 +1,14 @@
 namespace Laba5;
 
 
+/// <summary>
+/// Игра "Крестики-нолики" на поле 10x10. Побеждает тот, кто первый соберёт 5 в ряд.
+/// </summary>
 internal class PlayTicTakToe
 {
-   
+    /// <summary>
+    /// Показывает меню игры: можно играть, проверить ничью или выйти.
+    /// </summary>
     public static void Run()
     {
         while (true)
@@ -34,7 +39,9 @@ internal class PlayTicTakToe
         }
     }
 
- 
+    /// <summary>
+    /// Основная игра для двух игроков. Ходы делаются по очереди, пока кто-то не победит или не будет ничьей.
+    /// </summary>
     public static void PlayGame()
     {
         bool again = true;
@@ -105,7 +112,9 @@ internal class PlayTicTakToe
         }
     }
 
-    
+    /// <summary>
+    /// Тестовый режим. Заполняет доску на 99 клеток и проверяет, что ничья определяется правильно.
+    /// </summary>
     public static void TestDraw()
     {
         const int size = 10;
@@ -161,6 +170,12 @@ internal class PlayTicTakToe
         Console.ReadLine();
     }
 
+    /// <summary>
+    /// Проверяет, есть ли на доске ничья, то есть все клетки уже заняты.
+    /// </summary>
+    /// <param name="board">Игровая доска.</param>
+    /// <param name="size">Размер доски.</param>
+    /// <returns>Возвращает true, если свободных клеток нет, иначе false.</returns>
     public static bool CheckDraw(char[,] board, int size)
     {
         for (int r = 0; r < size; r++)
@@ -176,7 +191,11 @@ internal class PlayTicTakToe
         return true;
     }
 
-    
+    /// <summary>
+    /// Печатает доску в консоль, чтобы игрок видел, куда ходить.
+    /// </summary>
+    /// <param name="board">Игровая доска.</param>
+    /// <param name="size">Размер доски.</param>
     public static void PrintBoard(char[,] board, int size)
     {
         Console.WriteLine("\n   1 2 3 4 5 6 7 8 9 10");
@@ -193,7 +212,14 @@ internal class PlayTicTakToe
         Console.WriteLine();
     }
 
- 
+    /// <summary>
+    /// Переводит введённые координаты (например "A3" или "1 3") в индексы массива.
+    /// </summary>
+    /// <param name="input">Что ввёл пользователь.</param>
+    /// <param name="size">Размер доски.</param>
+    /// <param name="r">Номер строки (считается с 0).</param>
+    /// <param name="c">Номер столбца (считается с 0).</param>
+    /// <returns>Возвращает true, если координаты верные, иначе false.</returns>
     public static bool TryParseCell(string input, int size, out int r, out int c)
     {
         r = -1;
@@ -227,6 +253,15 @@ internal class PlayTicTakToe
     }
 
 
+    /// <summary>
+    /// Проверяет, собрал ли игрок 5 одинаковых символов подряд после последнего хода.
+    /// </summary>
+    /// <param name="board">Игровая доска.</param>
+    /// <param name="size">Размер доски.</param>
+    /// <param name="r">Строка, куда сходил игрок.</param>
+    /// <param name="c">Столбец, куда сходил игрок.</param>
+    /// <param name="symbol">Символ игрока ('X' или 'O').</param>
+    /// <returns>Возвращает true, если игрок победил, иначе false.</returns>
     public static bool CheckWin(char[,] board, int size, int r, int c, char symbol)
     {
         int[][] directions = new int[][]

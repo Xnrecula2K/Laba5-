@@ -3,9 +3,15 @@ using Laba5;
 namespace Laba5
 {
 
+    /// <summary>
+    /// Главный класс программы. Тут находится точка входа и меню.
+    /// </summary>
     class Program
     {
-        
+        /// <summary>
+        /// Точка входа в программу. Показывает меню и вызывает нужный метод.
+        /// </summary>
+        /// <param name="args">Аргументы командной строки (не используются).</param>
         internal static void Main(string[] args)
         {
             bool isRunning = true;
