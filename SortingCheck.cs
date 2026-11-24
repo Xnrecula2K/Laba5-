@@ -2,16 +2,37 @@ using System.Diagnostics;
 
 namespace Laba5;
 
-internal static class SortingCheck
+internal class SortingCheck
 {
+    private int _len;
 
-    public static void RunDefault()
+    public SortingCheck()
     {
-        ExecuteSorting(10);
+        _len = 10;
     }
 
 
-    public static void RunCustom()
+    public SortingCheck(int len)
+    {
+        if (len <= 0 || len > 10)
+        {
+            Console.WriteLine("Некорректная длина в конструкторе. Установлено значение по умолчанию (10).");
+            _len = 10;
+        }
+        else
+        {
+            _len = len;
+        }
+    }
+
+    // Запуск с длиной, заданной в конструкторе
+    public void RunDefault()
+    {
+        ExecuteSorting(_len);
+    }
+
+    // Запуск с вводом длины с клавиатуры (обновляет поле _len)
+    public void RunCustom()
     {
         Console.Write("Введите размер массива от 1 до 10: ");
         bool isLength = int.TryParse(Console.ReadLine(), out int length);
@@ -22,11 +43,11 @@ internal static class SortingCheck
             return;
         }
 
-        ExecuteSorting(length);
+        _len = length;
+        ExecuteSorting(_len);
     }
 
-
-    private static void ExecuteSorting(int length)
+    private void ExecuteSorting(int length)
     {
         int[] array = new int[length];
         Random rand = new Random();
@@ -73,7 +94,7 @@ internal static class SortingCheck
         }
     }
 
-    static void GnomeSort(int[] array)
+    private void GnomeSort(int[] array)
     {
         int index = 0;
         while (index < array.Length)
@@ -92,7 +113,7 @@ internal static class SortingCheck
         }
     }
 
-    static void InsertionSort(int[] array)
+    private void InsertionSort(int[] array)
     {
         for (int i = 1; i < array.Length; i++)
         {
