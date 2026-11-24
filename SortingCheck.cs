@@ -1,19 +1,33 @@
 using System.Diagnostics;
+
 namespace Laba5;
 
 internal static class SortingCheck
 {
-    public static void Run()
+
+    public static void RunDefault()
+    {
+        ExecuteSorting(10);
+    }
+
+
+    public static void RunCustom()
     {
         Console.Write("Введите размер массива от 1 до 10: ");
         bool isLength = int.TryParse(Console.ReadLine(), out int length);
 
-        if (!isLength || length <= 0 || length >= 10)
+        if (!isLength || length <= 0 || length > 10)
         {
             Console.WriteLine("Неправильный ввод длины массива от 1 до 10.");
             return;
         }
 
+        ExecuteSorting(length);
+    }
+
+
+    private static void ExecuteSorting(int length)
+    {
         int[] array = new int[length];
         Random rand = new Random();
 
@@ -94,5 +108,4 @@ internal static class SortingCheck
             array[j + 1] = key;
         }
     }
-
 }
