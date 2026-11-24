@@ -1,8 +1,8 @@
 namespace Laba5;
 
+
 internal class PlayGuessGame
 {
-
     public static void Run(ref bool isRunning)
     {
         if (!GameInputs(out int a, out int b))
@@ -12,6 +12,7 @@ internal class PlayGuessGame
 
         GameLogic(a, b, ref isRunning);
     }
+
     public static bool GameInputs(out int a, out int b)
     {
         a = 0;

@@ -1,7 +1,9 @@
 namespace Laba5;
 
+
 internal class PlayTicTakToe
 {
+   
     public static void Run()
     {
         while (true)
@@ -32,6 +34,7 @@ internal class PlayTicTakToe
         }
     }
 
+ 
     public static void PlayGame()
     {
         bool again = true;
@@ -102,6 +105,7 @@ internal class PlayTicTakToe
         }
     }
 
+    
     public static void TestDraw()
     {
         const int size = 10;
@@ -172,6 +176,7 @@ internal class PlayTicTakToe
         return true;
     }
 
+    
     public static void PrintBoard(char[,] board, int size)
     {
         Console.WriteLine("\n   1 2 3 4 5 6 7 8 9 10");
@@ -188,6 +193,7 @@ internal class PlayTicTakToe
         Console.WriteLine();
     }
 
+ 
     public static bool TryParseCell(string input, int size, out int r, out int c)
     {
         r = -1;
@@ -219,6 +225,7 @@ internal class PlayTicTakToe
 
         return false;
     }
+
 
     public static bool CheckWin(char[,] board, int size, int r, int c, char symbol)
     {

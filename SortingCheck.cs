@@ -25,13 +25,13 @@ internal class SortingCheck
         }
     }
 
-    // Запуск с длиной, заданной в конструкторе
+    
     public void RunDefault()
     {
         ExecuteSorting(_len);
     }
 
-    // Запуск с вводом длины с клавиатуры (обновляет поле _len)
+    
     public void RunCustom()
     {
         Console.Write("Введите размер массива от 1 до 10: ");
